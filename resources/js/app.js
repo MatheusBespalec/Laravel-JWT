@@ -8,6 +8,18 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
+import Vue from 'vue';
+// Import Vuex
+import Vuex from 'Vuex'
+
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+    state: {
+        model: {},
+    }
+}) 
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -22,10 +34,10 @@ window.Vue = require('vue').default;
 Vue.component('login-component', require('./components/Login.vue').default);
 Vue.component('home-component', require('./components/Home.vue').default);
 Vue.component('card-component', require('./components/Card.vue').default);
-Vue.component('form-component', require('./components/Form.vue').default);
-Vue.component('input-component', require('./components/Input.vue').default);
 Vue.component('table-component', require('./components/Table.vue').default);
 Vue.component('modal-component', require('./components/Modal.vue').default);
+Vue.component('brand-component', require('./components/Brand.vue').default);
+Vue.component('alert-component', require('./components/Alert.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33,6 +45,17 @@ Vue.component('modal-component', require('./components/Modal.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.filter('formatDate', function(date) {
+    if(!date) return ''
+    
+    date = date.split('T')[0]
+    date = date.split('-')
+    date = date[2] + '/' + date[1] + '/' + date[0]
+
+    return date
+})
+
 const app = new Vue({
     el: '#app',
+    store,
 });

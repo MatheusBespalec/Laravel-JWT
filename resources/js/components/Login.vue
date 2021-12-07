@@ -79,7 +79,7 @@ export default {
                 .then(response => response.json())
                 .then(data => {
                     if(data.access_token){
-                        document.cookie = 'access_token=' + data.access_token +';SameSite=Lax'
+                        document.cookie = 'token=' + data.access_token +';SameSite=Lax'
                     }
                     e.target.submit()
                 })

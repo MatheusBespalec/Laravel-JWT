@@ -9,10 +9,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <slot></slot>
+                    <slot name="body"></slot>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <slot name="footer"></slot>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                 </div>
             </div>
         </div>

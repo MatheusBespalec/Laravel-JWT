@@ -37,4 +37,9 @@ abstract class Repository
     {
         return $this->model->get();
     }
+
+    public function getPaginate(int $limit)
+    {
+        return $this->model->paginate($limit);
+    }
 }

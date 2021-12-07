@@ -20,8 +20,7 @@ use App\Http\Controllers\AuthController;
 |
 */
 Route::middleware('jwt.auth')->group(function() {
-    Route::middleware('api')->prefix('auth')->group(function () {
-        Route::post('/refresh', [AuthController::class, 'refresh']);
+    Route::prefix('auth')->group(function () {
         Route::post('/me', [AuthController::class, 'me']);
         Route::post('/logout', [AuthController::class, 'logout']);
     });
@@ -33,6 +32,7 @@ Route::middleware('jwt.auth')->group(function() {
     Route::apiResource('model', CarModelController::class);
 });
 
-Route::middleware('api')->prefix('auth')->group(function () {
+Route::prefix('auth')->group(function() {
     Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/refresh', [AuthController::class, 'refresh']);
 });
